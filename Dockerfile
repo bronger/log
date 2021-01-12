@@ -7,4 +7,4 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-stati
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
-CMD ["sh", "-c", "exec tail -F $LOG_PATH"]
+CMD ["sh", "-c", "exec tail -F \"$LOG_PATH\""]
