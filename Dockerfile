@@ -2,9 +2,7 @@ FROM busybox
 
 MAINTAINER Torsten Bronger <t.bronger@fz-juelich.de>
 
-ARG TINI_VERSION=v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static /tini
-RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--"]
+ADD https://gist.githubusercontent.com/bronger/acce7736141b3fa118b0d47f1a2035ac/raw/signal_propagation.sh /usr/local/lib/
 
-CMD ["sh", "-c", "exec tail -F \"$LOG_PATH\""]
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
