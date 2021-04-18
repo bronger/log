@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-script=$(readlink -f "$0")
+script=$(realpath -e "$0")
 script_path=$(dirname "$script")
 
 docker build -t bronger/log "$script_path"
